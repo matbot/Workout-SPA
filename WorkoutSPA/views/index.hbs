@@ -1,0 +1,61 @@
+<img src="/images/gym_GeorgePagain3.jpg" id="backgroundIMG">
+
+
+<div class="table-responsive container" id="tableContent">
+    <h1>{{title}}</h1>
+    <span>with MySQL</span>
+    <h5>{{{alert}}}</h5>
+
+    <form action="/x" method="post" id="addExercise"></form>
+
+    <table class="table table-hover" id="workouts">
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>Exercise</th>
+            <th>Weight</th>
+            <th>Measure</th>
+            <th>Reps</th>
+            <th><form action="/reset-table"><button type="submit" class="btn btn-default">Reset Table!</button></form></th>
+        </tr>
+        </thead>
+        <tbody>
+            {{#each workouts}}
+                <tr>
+                    <td>{{{moment this.date format="YYYY-MM-DD"}}}</td>
+                    <td>{{{this.name}}}</td>
+                    <td>{{{this.weight}}}</td>
+                    <td>{{#if this.lbs}}lbs{{else}}kgs{{/if}}</td>
+                    <td>{{{this.reps}}}</td>
+                    <td><form action=""><button type="submit" class="btn btn-default editButton" id="{{{this.id}}}">Edit</button></form></td>
+                    <td><form action=""><button type="submit" class="btn btn-default deleteButton" id="{{{this.id}}}">Delete</button></form></td>
+                </tr>
+            {{/each}}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>
+                    <input type="date" required name="Date" form="addExercise"/>
+                </td>
+                <td>
+                    <input type="text" required name="Exercise" placeholder="Exercise" form="addExercise"/>
+                </td>
+                <td>
+                    <input type="number" name="Weight" placeholder="Weight" form="addExercise"/>
+                </td>
+                <td>
+                    <label>lbs<input type="radio" required checked name="Lbs" value=1 form="addExercise"></label>
+                    <label>kgs<input type="radio" required name="Lbs" value=0 form="addExercise"></label>
+                </td>
+                <td>
+                    <input type="number" name="Reps" placeholder="Reps" form="addExercise"/>
+                </td>
+                <td>
+                    <button type="submit" name="addExercise" id="addExerciseButton" form="addExercise">Add Exercise!</button>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+    <a href='http://www.SiliconValley-Codecamp.com/' target='_blank' title='I am attending Silicon Valley Code Camp At PayPal Town Hall!.  Join me and click here for details and registration' ><img  target='_blank' alt='CodeCamp at PayPal Town Hall.' src='http://www.siliconvalley-codecamp.com/images/attendees01.jpg?w=250' /></a>
+</div>
+
